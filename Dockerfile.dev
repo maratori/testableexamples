@@ -1,0 +1,6 @@
+FROM golang:1.19.0 AS go
+
+FROM go AS dev
+ENV INSIDE_DEV_CONTAINER 1
+WORKDIR /app
+COPY --from=linter /usr/bin/golangci-lint /usr/bin/
