@@ -16,6 +16,11 @@ test-cover: ## run all tests with code coverage
 	go test -race -p 8 -parallel 8 -timeout 1m -coverpkg ./... -coverprofile coverage.out ./...
 .PHONY: test-cover
 
+lint: build-docker-dev ## run linter
+	@echo "+ $@"
+	$(RUN_IN_DOCKER) golangci-lint run
+.PHONY: lint
+
 bash: build-docker-dev ## run bash inside container for development
  ifndef INSIDE_DEV_CONTAINER
 	@echo "+ $@"
