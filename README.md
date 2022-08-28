@@ -1,8 +1,25 @@
 # testableexamples <br> [![CI][ci-img]][ci-url] [![Codecov][codecov-img]][codecov-url] [![Codebeat][codebeat-img]][codebeat-url] [![Maintainability][codeclimate-img]][codeclimate-url] [![Go Report Card][goreportcard-img]][goreportcard-url] [![License][license-img]][license-url] [![Go Reference][godoc-img]][godoc-url]
 
-Linter checks if examples are testable.
+Linter checks if examples are testable (have an expected output).
 
-Author of idea is [Jamie Tanna](https://github.com/jamietanna) (see [this issue](https://github.com/golangci/golangci-lint/issues/3084)).
+> Author of idea is [Jamie Tanna](https://github.com/jamietanna) (see [this issue](https://github.com/golangci/golangci-lint/issues/3084)).
+
+## Description
+
+Example functions without output comments are compiled but not executed by `go test`, see [doc](https://pkg.go.dev/testing#hdr-Examples).  
+It means that such examples are not validated. This can lead to outdated code.  
+That's why the linter complains on missing output.
+
+```go
+func Example_bad() { // <- linter will complain on missing output
+	fmt.Println("hello")
+}
+
+func Example_good() {
+	fmt.Println("hello")
+	// Output: hello
+}
+```
 
 
 ## Usage as standalone linter
