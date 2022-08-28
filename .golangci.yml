@@ -272,3 +272,7 @@ issues:
         - gosec
         - noctx
         - wrapcheck
+
+    # specific to testableexamples
+    - path: "pkg/testableexamples/testfiles"
+      linters: [ testpackage ]
