@@ -1,3 +1,4 @@
+# update together with .github/workflows/ci.yml
 FROM golang:1.19.0 AS go
 
 FROM go AS dev
