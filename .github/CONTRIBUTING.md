@@ -20,6 +20,12 @@ Please make sure you've added all necessary tests.
 make test
 ```
 
+### Run Linter
+
+```shell
+make lint
+```
+
 ## Development inside container
 
 Docker container contains all necessary tools for development. Just run bash in the dev container.
