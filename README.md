@@ -4,6 +4,7 @@ Linter checks if examples are testable (have an expected output).
 
 > Author of idea is [Jamie Tanna](https://github.com/jamietanna) (see [this issue](https://github.com/golangci/golangci-lint/issues/3084)).
 
+
 ## Description
 
 Example functions without output comments are compiled but not executed by `go test`, see [doc](https://pkg.go.dev/testing#hdr-Examples).  
@@ -22,6 +23,62 @@ func Example_good() {
 ```
 
 
+## Usage
+
+The best way is to use [golangci-lint](https://golangci-lint.run/).  
+It includes [testableexamples](https://golangci-lint.run/usage/linters/#list-item-testableexamples) and a lot of other great linters.
+
+### Install
+
+See [official site](https://golangci-lint.run/usage/install/).
+
+### Enable
+
+`testableexamples` is disabled by default.  
+To enable it, add the following to your `.golangci.yml`:
+
+```yaml
+linters:
+  enable:
+    testableexamples
+```
+
+### Run
+
+```shell
+golangci-lint run
+```
+
+### Directive `//nolint:testableexamples`
+
+Here is incorrect usage of `//nolint` directive.  
+`golangci-lint` understands it correctly, but `godoc` will include comment to the code.
+
+```go
+// Description
+func Example_nolintIncorrect() { //nolint:testableexamples // that's why
+	fmt.Println("hello")
+}
+```
+
+Here are two examples of correct usage of `//nolint` directive.  
+`godoc` will ignore comment.
+
+```go
+//nolint:testableexamples // that's why
+func Example_nolintCorrect() {
+	fmt.Println("hello")
+}
+
+// Description
+//
+//nolint:testableexamples // that's why
+func Example_nolintCorrectWithDescription() {
+	fmt.Println("hello")
+}
+```
+
+
 ## Usage as standalone linter
 
 ### Install
@@ -34,6 +91,16 @@ go install github.com/maratori/testableexamples@latest
 ```shell
 testableexamples ./...
 ```
+
+### Nolint
+
+Standalone linter doesn't support `//nolint` directive.  
+And there is no alternative for that, please use `golangci-lint`.
+
+
+## License
+
+[MIT License][license-url]
 
 
 [ci-img]: https://github.com/maratori/testableexamples/actions/workflows/ci.yml/badge.svg
