@@ -31,6 +31,31 @@ linters-settings:
       - switch
       - map
 
+  exhaustruct:
+    # List of regular expressions to exclude struct packages and names from check.
+    # Default: []
+    exclude:
+      # std libs
+      - "^net/http.Client$"
+      - "^net/http.Cookie$"
+      - "^net/http.Request$"
+      - "^net/http.Response$"
+      - "^net/http.Server$"
+      - "^net/http.Transport$"
+      - "^net/url.URL$"
+      - "^os/exec.Cmd$"
+      - "^reflect.StructField$"
+      # public libs
+      - "^github.com/Shopify/sarama.Config$"
+      - "^github.com/Shopify/sarama.ProducerMessage$"
+      - "^github.com/mitchellh/mapstructure.DecoderConfig$"
+      - "^github.com/prometheus/client_golang/.+Opts$"
+      - "^github.com/spf13/cobra.Command$"
+      - "^github.com/spf13/cobra.CompletionOptions$"
+      - "^golang.org/x/tools/go/analysis.Analyzer$"
+      - "^google.golang.org/protobuf/.+Options$"
+      - "^gopkg.in/yaml.v3.Node$"
+
   funlen:
     # Checks the number of lines in a function.
     # If lower than 0, disable the check.
@@ -42,7 +67,7 @@ linters-settings:
     statements: 50
 
   gocognit:
-    # Minimal code complexity to report
+    # Minimal code complexity to report.
     # Default: 30 (but we recommend 10-20)
     min-complexity: 20
 
@@ -92,7 +117,7 @@ linters-settings:
         - github.com/gofrs/uuid:
             recommendations:
               - github.com/google/uuid
-            reason: "see recommendation from dev-infra team: https://confluence.gtforge.com/x/gQI6Aw"
+            reason: "gofrs' package is not go module"
 
   govet:
     # Enable all analyzers.
@@ -162,9 +187,11 @@ linters:
     - errorlint # finds code that will cause problems with the error wrapping scheme introduced in Go 1.13
     - execinquery # checks query string in Query function which reads your Go src files and warning it finds
     - exhaustive # checks exhaustiveness of enum switch statements
+    - exhaustruct # [highly recommend to enable] checks if all structure fields are initialized
     - exportloopref # checks for pointers to enclosing loop variables
     - forbidigo # forbids identifiers
     - funlen # tool for detection of long functions
+    - gocheckcompilerdirectives # validates go compiler directive comments (//go:)
     - gochecknoglobals # checks that no global variables exist
     - gochecknoinits # checks that no init functions are present in Go code
     - gocognit # computes and checks the cognitive complexity of functions
@@ -181,6 +208,7 @@ linters:
     - lll # reports long lines
     - loggercheck # checks key value pairs for common logger libraries (kitlog,klog,logr,zap)
     - makezero # finds slice declarations with non-zero initial length
+    - musttag # enforces field tags in (un)marshaled structs
     - nakedret # finds naked returns in functions greater than a specified function length
     - nestif # reports deeply nested if statements
     - nilerr # finds the code that returns nil even if it checks that the error is not nil
@@ -208,8 +236,8 @@ linters:
 
     ## you may want to enable
     #- decorder # checks declaration order and count of types, constants, variables and functions
-    #- exhaustruct # checks if all structure fields are initialized
     #- gci # controls golang package import order and makes it always deterministic
+    #- ginkgolinter # [if you use ginkgo/gomega] enforces standards of using ginkgo and gomega
     #- godox # detects FIXME, TODO and other comment keywords
     #- goheader # checks is file header matches to pattern
     #- interfacebloat # checks the number of methods inside an interface
