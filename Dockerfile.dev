@@ -1,5 +1,5 @@
 # update together with .github/workflows/ci.yml
-FROM golang:1.20.0 AS go
+FROM golang:1.20.1 AS go
 
 # update together with .github/workflows/ci.yml
 FROM golangci/golangci-lint:v1.51.1 AS linter
