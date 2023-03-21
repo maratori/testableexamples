@@ -52,6 +52,9 @@ linters-settings:
       - "^github.com/prometheus/client_golang/.+Opts$"
       - "^github.com/spf13/cobra.Command$"
       - "^github.com/spf13/cobra.CompletionOptions$"
+      - "^github.com/stretchr/testify/mock.Mock$"
+      - "^github.com/testcontainers/testcontainers-go.+Request$"
+      - "^github.com/testcontainers/testcontainers-go.FromDockerfile$"
       - "^golang.org/x/tools/go/analysis.Analyzer$"
       - "^google.golang.org/protobuf/.+Options$"
       - "^gopkg.in/yaml.v3.Node$"
@@ -288,14 +291,10 @@ issues:
 
   exclude-rules:
     # from golden config
-    - source: "^//\\s*go:generate\\s"
-      linters: [ lll ]
     - source: "(noinspection|TODO)"
       linters: [ godot ]
     - source: "//noinspection"
       linters: [ gocritic ]
-    - source: "^\\s+if _, ok := err\\.\\([^.]+\\.InternalError\\); ok {"
-      linters: [ errorlint ]
     - path: "_test\\.go"
       linters:
         - bodyclose
