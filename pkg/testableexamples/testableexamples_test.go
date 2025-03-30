@@ -4,8 +4,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/maratori/testableexamples/pkg/testableexamples"
 	"golang.org/x/tools/go/analysis/analysistest"
+
+	"github.com/maratori/testableexamples/pkg/testableexamples"
 )
 
 func TestAnalyzer(t *testing.T) {
