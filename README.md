@@ -1,4 +1,4 @@
-# testableexamples <br> [![go minimal version][go-img]][go-url] [![go tested version][go-latest-img]][go-latest-url] [![CI][ci-img]][ci-url] [![Codecov][codecov-img]][codecov-url] [![Codebeat][codebeat-img]][codebeat-url] [![Maintainability][codeclimate-img]][codeclimate-url] [![Go Report Card][goreportcard-img]][goreportcard-url] [![License][license-img]][license-url] [![Go Reference][godoc-img]][godoc-url]
+# testableexamples <br> [![go minimal version][go-img]][go-url] [![go tested version][go-latest-img]][go-latest-url] [![CI][ci-img]][ci-url] [![Codecov][codecov-img]][codecov-url] [![Maintainability][codeclimate-img]][codeclimate-url] [![Go Report Card][goreportcard-img]][goreportcard-url] [![License][license-img]][license-url] [![Go Reference][godoc-img]][godoc-url]
 
 Linter checks if examples are testable (have an expected output).
 
@@ -111,8 +111,6 @@ And there is no alternative for that, please use `golangci-lint`.
 [ci-url]: https://github.com/maratori/testableexamples/actions/workflows/ci.yml
 [codecov-img]: https://codecov.io/gh/maratori/testableexamples/branch/main/graph/badge.svg?token=VMXc2fc7cJ
 [codecov-url]: https://codecov.io/gh/maratori/testableexamples
-[codebeat-img]: https://codebeat.co/badges/1b813bf1-336d-4886-b4fa-1d482bedc754
-[codebeat-url]: https://codebeat.co/projects/github-com-maratori-testableexamples-main
 [codeclimate-img]: https://api.codeclimate.com/v1/badges/47ed5db4a7595d4f95d5/maintainability
 [codeclimate-url]: https://codeclimate.com/github/maratori/testableexamples/maintainability
 [goreportcard-img]: https://goreportcard.com/badge/github.com/maratori/testableexamples
