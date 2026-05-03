@@ -10,6 +10,7 @@ import (
 )
 
 func TestAnalyzer(t *testing.T) {
+	t.Parallel()
 	// dir is named `testfiles` not `testdata` to be able to run examples with `make test`
 	testdata, err := filepath.Abs("testfiles")
 	if err != nil {
